@@ -58,6 +58,7 @@ int main()
     else
         cout << "o vetor nao tem elementos negativos" << endl;
 
+    delete vet;
 
     return 0;
 }
