@@ -20,9 +20,9 @@ bool func(int tam, int vet[], int *par, int *impar, int *negativos)
         if(vet[contaNegativos] < 0)
             qNegativos++;
 
-    //cout << qPares << endl;
-    //cout << qImpares << endl;
-    //cout << qNegativos << endl;
+    cout << "numero de pares: " << qPares << endl;
+    cout << "numero de impares: " << qImpares << endl;
+    cout << "numero de negativos: " << qNegativos << endl;
 
     if(qNegativos > 0)
         return 1;
