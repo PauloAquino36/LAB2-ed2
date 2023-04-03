@@ -9,6 +9,8 @@ void imprimeIntervalo(int a, int b, int inc)
         cout << a << " ";
         imprimeIntervalo((a + inc), b, inc);
     }
+    else if(a == b)
+        cout << a;
 }
 
 
