@@ -4,7 +4,7 @@ using namespace std;
 
 void imprimeIntervalo(int a, int b, int inc)
 {
-    if(a < b)
+    if(a <= b)
     {
         cout << a << " ";
         imprimeIntervalo((a + inc), b, inc);
