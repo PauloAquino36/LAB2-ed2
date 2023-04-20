@@ -20,6 +20,8 @@ int main()
     media /= n;
 
     cout << "media = " << media << endl;
-
+    
+    
+    delete [] vet;
     return 0;
 }
