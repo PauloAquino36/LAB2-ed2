@@ -32,6 +32,13 @@ int main()
 
     float **mat = nullptr;
     mat = alocaMatrizF(m,n);
+    
+        // Liberando a memória alocada para as linhas
+    for(int i = 0; i < m; i++)
+        delete[] mat[i];
 
+    // Liberando a memória alocada para o vetor de ponteiros
+    delete[] mat;
+    
     return 0;
 }
