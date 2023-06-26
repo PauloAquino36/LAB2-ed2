@@ -17,7 +17,7 @@ int ArvBin::getRaiz()
         return raiz->getInfo();
     else
     {
-        cout << "Árvore vazia!" << endl;
+        cout << "Ãrvore vazia!" << endl;
         exit(1);
     }
 }
@@ -220,8 +220,9 @@ int ArvBin::auxAltura(NoArv * p)
 
 int ArvBin::contaImpar()
 {
-    return auxContaNosFolhas(raiz);
+    return auxContaImpar(raiz);
 }
+
 int ArvBin::auxContaImpar(NoArv * p)
 {
     if(p==NULL)
@@ -230,15 +231,98 @@ int ArvBin::auxContaImpar(NoArv * p)
     }
     else
     {
-        int contEsq;
-        int contDir;
-        int x = p->getEsq();
-        if(x % 2 == 0)
-            contEsq = auxContaNos(p->getEsq());
-        if(p->getDir() != 0)
-            contDir = auxContaNos(p->getDir());
+        int contEsq = auxContaImpar(p->getEsq());
+        int contDir = auxContaImpar(p->getDir());
 
-        return contDir + contEsq;
+        if(p->getInfo() % 2 == 0)
+        {
+
+            return contDir + contEsq + 0;
+        }
+        else
+        {
+            return contDir + contEsq + 1;
+        }
+
     }
+}
 
+int ArvBin::contaFolhaImpar()
+{
+    return auxContaFolhaImpar(raiz);
+}
+
+int ArvBin::auxContaFolhaImpar(NoArv *p)
+{
+    if(p==NULL)
+    {
+        return 0;
+    }
+    else if(p->getEsq() == NULL && p->getDir() == NULL)
+    {
+        if(p->getInfo() % 2 == 0)
+            return 0;
+        else
+            return 1;
+    }
+    else
+    {
+        int contFolhaEsq = auxContaFolhaImpar(p->getEsq());
+        int contFolhDir = auxContaFolhaImpar(p->getDir());
+        return contFolhaEsq + contFolhDir + 0;
+    }
+}
+
+void ArvBin::imprimeNivel(int k)
+{
+    auxImprimeNivel(raiz, k, 0);
+}
+
+void ArvBin::auxImprimeNivel(NoArv * p, int k, int nivel)
+{
+    if(p != NULL)
+    {
+        if(k==nivel)
+        {
+            cout << p->getInfo() << " ";
+        }
+        else
+        {
+            auxImprimeNivel(p->getEsq(), k, nivel+1);
+            auxImprimeNivel(p->getDir(), k, nivel+1);
+        }
+    }
+}
+
+float ArvBin::mediaNivel(int k)
+{
+    int cont = 0;
+    int soma = auxMediaNivel(raiz, k, 0, &cont);
+    if(cont == 0)
+    {
+        cout << "nao a nos neste nivel!" << endl;
+        return 0;
+    }
+    else
+    {
+        return soma / (float)cont;
+    }
+}
+
+int ArvBin::auxMediaNivel(NoArv * p, int k, int nivel, int *cont)
+{
+    if(p != NULL)
+    {
+        if(k==nivel)
+        {
+            *cont = *cont + 1;
+            return p->getInfo();
+        }
+        else
+        {
+            return auxMediaNivel(p->getEsq(), k, nivel+1, cont) + auxMediaNivel(p->getDir(), k, nivel+1, cont);
+        }
+    }
+    else
+        return 0;
 }
