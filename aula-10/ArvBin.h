@@ -10,7 +10,7 @@ class ArvBin
     int getRaiz();
     void cria(int x, ArvBin *sae, ArvBin *sad);
     void anulaRaiz();
-    bool vazia(); // verifica se a ·rvore est· vazia
+    bool vazia(); // verifica se a √°rvore est√° vazia
     bool busca(int x);
     void preOrdem();
     void montaArvore();
@@ -19,9 +19,12 @@ class ArvBin
     int contaNosFolhas();
     int altura();
     int contaImpar();
+    int contaFolhaImpar();
+    void imprimeNivel(int k);
+    float mediaNivel(int k);
 
   private:
-    NoArv *raiz; // ponteiro para o No raiz da ·rvore
+    NoArv *raiz; // ponteiro para o No raiz da √°rvore
 
     NoArv* libera(NoArv *p);
     bool auxBusca(NoArv *p, int x);
@@ -34,6 +37,9 @@ class ArvBin
     int auxContaNosFolhas(NoArv * p);
     int auxAltura(NoArv * p);
     int auxContaImpar(NoArv * p);
+    int auxContaFolhaImpar(NoArv * p);
+    void auxImprimeNivel(NoArv * p, int k, int nivel);
+    int auxMediaNivel(NoArv * p, int k, int nivel, int *cont);
 };
 
 #endif // ARVBIN_H_INCLUDED
