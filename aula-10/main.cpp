@@ -40,6 +40,14 @@ int main()
     cout << endl << "numero de nos = " << arv6->contaNos() << endl;
     cout << "numero de nos folhas = " << arv6->contaNosFolhas() << endl;
     cout << "altura = " << arv6->altura() << endl;
+    cout << "Nos impares = " << arv6->contaImpar() << endl;
+    cout << "Nos folhas impares = " << arv6->contaFolhaImpar() << endl;
+
+    cout << "Nos do nivel 1: ";
+    arv6->imprimeNivel(2);
+    cout << endl;
+
+    cout << "media do nivel 1 = " << arv6->mediaNivel(2) << endl;
 
     return 0;
 }
